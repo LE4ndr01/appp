@@ -1,41 +1,53 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Registro de Usuario</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css' %}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
     
-    
-    <title>Agregar Usuario</title>
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
-    
-    <div class="card">
-        <div class="card-body">
-           
-            <div class="row">
-                <div class="col-12 col-md-6 offset-md-3">
-
-                  <form action="" method="post" enctype="multipart/form-data">
-
-                    {% csrf_token %}
-                    {{form}}
-
-                    <div class="d-flex justify-content-center">
-                        <input type="reset" value="Cancelar" class="btn btn-secondary">
-                        <input type="submit" value="Guardar" class="btn btn-primary">  
-                    </div>
-                    
-
-                  </form>      
-
+  <body>
+        
+    <div id="contenedor">
+        <div id="central">
+            <div id="login">
+                <div class="titulo">
+                    Bienvenido
                 </div>
+                <form method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                    <input type="submit" value="Agregar" class="btn btn-sucess">
+                </form>
+            <div class="inferior">
+                <a href="{% url 'listar_usuarios' %}">Volver</a>
             </div>
-
         </div>
     </div>
-
-
+    </div>
+        
 </body>
+  
+
 </html>

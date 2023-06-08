@@ -32,6 +32,8 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL= '/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'proyectoweb.context_processor.total_carrito',
             ],
         },
     },
@@ -89,7 +92,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'localhost:1521/xe',
-        'USER': 'airesbd',
+        'USER': 'leo',
         'PASSWORD': '1234',
         'TEST': {
             'USER': 'default_test',

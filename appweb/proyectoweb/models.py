@@ -3,9 +3,8 @@ from django.db import models
 # Create your models here.
 
 
-class Producto(models.Model):
-    id_producto = models.IntegerField(primary_key=True)
-    nombre = models.CharField(max_length=100)
+class Articulo(models.Model):
+    nombre = models.CharField(max_length=10)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
@@ -13,9 +12,6 @@ class Producto(models.Model):
 
     def __str__(self):
         return str(self.id_producto)
-    
-    class Meta:
-        db_table= 'db_producto'
 
 
 opciones_consulta = [

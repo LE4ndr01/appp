@@ -15,8 +15,7 @@ class ContactoForm(forms.ModelForm):
         model = Contacto
         fields = '__all__'
         
-class UsuarioForm(forms.Form):
-    username = forms.CharField(label='Usuario')
-    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput)
-    is_staff = forms.BooleanField(label='es staff')
+class CustomUseradmCreationForm(UserCreationForm):
+        class Meta:
+            model = User
+            fields = ('username','email','password1','password2','is_staff')
