@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="{% static 'css/Productos.css'%}">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header-section container">
+            <img class="logo" src="{% static 'img/logo.png'%}" alt="">
+            
+            <div>
+                <img onmouseover="showCart(this)" class="cart" src="{% static 'img/carrito.png'%}" alt="">
+                <p class="count-product">0</p>
+            </div>
+            <div class="cart-products" id="products-id">
+                <p class="close-btn" onclick="closeBtn()">X</p>
+                <h3>Mi carrito</h3>
+                <div class="card-items">
+                </div>
+                <h2>Total: <strong class="price-total">0</strong> CLP</h2>
+            </div>
+            <li class="item_nabvar text-light">
+                <a class="link_nabvar text-light" href="{% url 'api'%} "><i class="btn btn-primary"></i> Pagar</a>
+            </li>
+        </div>
+    </header>
+    <section class="container">
+        <div class="products">
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/camas perros.jpg'%}" alt="">
+                    <p><span>12000</span> CLP</p>
+                </div>
+                <p class="title">Camas Perros, distintos tamaños(S,M,L,XL)</p>
+                <a href="" data-id="1" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/camasgatos.jpg'%}" alt="">
+                    <p><span>10000</span> CLP</p>
+                </div>
+                <p class="title"> Camas Gatos, distintos tamaños(S, M)</p>
+                <a href="" class="btn-add-cart" data-id="2">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/collarperros.jpg'%}" alt="">
+                    <p><span>8990</span> CLP</p>
+                </div>
+                <p class="title"> Collares Perro, distintos tamaños(S,M,L,XL)</p>
+                <a href="" data-id="3" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/collargato.jpg'%}" alt="">
+                    <p><span>6990</span>CLP</p>
+                </div>
+                <p class="title"> Collara Gato, distintos tamaños(S,M)</p>
+                <a href="" data-id="4" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/protecciongatos.jpg'%}" alt="">
+                    <p><span>17290</span>CLP</p>
+                </div>
+                <p class="title"> Ropa de proteccion para gatos, distintas tallas(S,M)</p>
+                <a href="" data-id="5" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/proteccionperros.jpg'%}" alt="">
+                    <p><span>18990</span> CLP</p>
+                </div>
+                <p class="title"> Ropa de proteccion para perros, distintas tallas(S,M,L,XL)</p>
+                <a href="" data-id="6" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/juguetesgato.jpg'%}" alt="">
+                    <p><span>4990</span> CLP</p>
+                </div>
+                <p class="title"> Variedad juguetes Gato(1 und.)</p>
+                <a href="" data-id="7" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/juguetesperro.jpg'%}" alt="">
+                    <p><span>4990</span>CLP</p>
+                </div>
+                <p class="title"> Variedad juguetes Perro   (1 und)</p>
+                <a href="" data-id="8" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/arenerogato.jpg'%}" alt="">
+                    <p><span>13990</span>CLP</p>
+                </div>
+                <p class="title"> Arenero Gato</p>
+                <a href="" data-id="9" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/bañoecologicoperro.jpg'%}" alt="">
+                    <p><span>9990</span>CLP</p>
+                </div>
+                <p class="title"> Baño ecologico Perro</p>
+                <a href="" data-id="10" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+            <div class="carts">
+                <div>
+                    <img src="{% static 'img/galletas.jpg'%}" alt="">
+                    <p><span>2.990</span>CLP</p>
+                </div>
+                <p class="title"> Galletas Perros o Gatos</p>
+                <a href="" data-id="11" class="btn-add-cart">Añadir al Carro</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h6>Developed by <span>TheSnorlaxYT</span>
+        </h6>
+    </footer>
+
+    <center>
+    <script>
+        function showCart(x){
+            document.getElementById("products-id").style.display = "block";
+        }
+        function closeBtn(){
+             document.getElementById("products-id").style.display = "none";
+        }
+        
+
+    </script>
+    </center>
+    <script src="{% static 'js/Productos.js'%}" ></script>
+</body>
+</html>

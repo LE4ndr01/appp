@@ -34,6 +34,10 @@ LOGOUT_REDIRECT_URL= '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
+MERCADOPAGO_PUBLIC_KEY = '#'
+MERCADOPAGO_ACCESS_TOKEN = '#'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'proyectoweb',
     'crispy_forms',
     'colorfield',
+    'mercadopago',
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -90,17 +96,16 @@ WSGI_APPLICATION = 'appweb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'localhost:1521/xe',
-        'USER': 'leo',
-        'PASSWORD': '1234',
-        'TEST': {
-            'USER': 'default_test',
-            'TBLSPACE': 'default_test_tbls',
-            'TBLSPACE_TMP': 'default_test_tbls_tmp',
-        },
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     },
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

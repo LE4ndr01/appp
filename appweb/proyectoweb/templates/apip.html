@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pago con Mercado Pago</title>
+  <script src="https://www.mercadopago.com/v2/security.js" defer></script>
+</head>
+<body>
+  <h1>Pago con Mercado Pago</h1>
+
+  <form id="payment-form" action="/procesar-pago" method="POST">
+    <!-- Datos del vendedor -->
+    <input type="hidden" name="seller_id" value="TU_ID_DE_VENDEDOR">
+  
+    <!-- Datos del pago -->
+    <input type="hidden" name="description" value="Producto de ejemplo">
+    <input type="hidden" name="currency_id" value="ARS">
+    <input type="hidden" name="amount" value="100">
+  
+    <!-- Botón de pago -->
+    <script>
+      function handlePayment(event) {
+        event.preventDefault();
+  
+        const script = document.createElement('script');
+        script.src = 'https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js';
+        script.setAttribute('data-preference-id', 'TU_PREFERENCE_ID');
+  
+        const form = document.getElementById('payment-form');
+        form.appendChild(script);
+      }
+  
+      document.getElementById('payment-form').addEventListener('submit', handlePayment);
+    </script>
+    <button type="submit">Pagar con Mercado Pago</button>
+  </form>
+</body>
+</html>

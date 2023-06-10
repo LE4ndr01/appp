@@ -33,6 +33,7 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
 
 </head>
@@ -122,8 +123,10 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
                             {% if user.is_superuser  %}
-                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Pagina de administracion</a>
-                            </li>
+                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Pagina de administracion</a></li>
+                            {% endif %}
+                            {% if user.is_staff %}
+                            <li><a href="{% url 'listar_usuarios' %}" class="dropdown-item">Listar usuarios </a></li>
                             {% endif %}
                         </ul>
                     </li>
@@ -681,21 +684,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-6 mb-5">
-                <h3 class="text-primary mb-4">Boletin informativo</h3>
-                <p>Recuerda que estamos aquí para ayudarte con todas tus necesidades de climatización. Si tienes alguna
-                    pregunta o requieres asesoramiento personalizado, no dudes en contactarnos.
-                </p>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 30px;"
-                            placeholder="Su email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-4">Inscribirse</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
@@ -726,7 +714,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+   
 
 
     <!-- JavaScript Libraries -->

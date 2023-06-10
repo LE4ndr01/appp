@@ -1,13 +1,15 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login as auth_login,authenticate
 from django.contrib import messages
-from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm
+from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm
 from django.http import HttpResponse
 from .models import Contacto,Articulo
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
 from .carrito import Carrito
+import mercadopago
+import json
 
 
 # Create your views here.
@@ -88,11 +90,38 @@ def agregar_usuario(request):
     
     return render(request,"Crud/agregar.html",context)
 
-### Agregar usuario ###
-
+### Listar usuario ###
+@login_required()
 def listar_usuarios(request):
     usuarios = User.objects.all()
     return render(request,"Crud/listar.html", {'usuarios':usuarios})
+
+### Modificar usuario ###
+def modificar_usuario(request, id):
+    usuario = get_object_or_404(User, id=id)
+    data = {
+        'form': CustomUserchangeForm(instance=usuario)
+    }
+    
+    if request.method == 'POST':
+        formulario = CustomUserchangeForm(request.POST, instance=usuario)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('listar_usuarios')
+        data['form'] = formulario
+  
+    return render(request, 'Crud/modificar.html', data)
+
+### Eliminar usuario ###
+
+def eliminar_usuario(request, id):
+    usuario = get_object_or_404(User, id=id)
+    usuario.delete()
+    return redirect('listar_usuarios')
+    
+
+
+    
 
 
 ##################################
@@ -130,3 +159,15 @@ def limpiar_carrito(request):
     carrito = Carrito(request)
     carrito.limpiar()
     return redirect("galeria")
+
+
+def api(request):
+    return render (request, 'api.html')
+
+def productos(request):
+    return render (request, 'productos.html')
+
+################################################
+
+def apis(request):
+    return render (request, 'apip.html')
