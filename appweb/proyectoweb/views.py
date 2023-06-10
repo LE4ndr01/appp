@@ -107,8 +107,10 @@ def modificar_usuario(request, id):
         formulario = CustomUserchangeForm(request.POST, instance=usuario)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request,'Usuario modificado exitosamente')
             return redirect('listar_usuarios')
         data['form'] = formulario
+        
   
     return render(request, 'Crud/modificar.html', data)
 
@@ -117,7 +119,9 @@ def modificar_usuario(request, id):
 def eliminar_usuario(request, id):
     usuario = get_object_or_404(User, id=id)
     usuario.delete()
+    messages.success(request, 'Usuario eliminado exitosamente')
     return redirect('listar_usuarios')
+    
     
 
 

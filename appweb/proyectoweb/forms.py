@@ -6,9 +6,13 @@ from .models import Contacto
 
 
 class CustomUserCreationForm(UserCreationForm):
-        class Meta:
+    username = forms.CharField(widget=forms.TextInput,help_text='')
+    email = forms.EmailField(widget=forms.EmailInput,help_text='')
+    password1 = forms.CharField(widget=forms.PasswordInput,help_text='')
+    password2 = forms.CharField(widget=forms.PasswordInput,help_text='')
+    class Meta:
             model = User
-            fields = ('username', 'password', 'email', 'first_name', 'last_name')
+            fields = ('username', 'email', 'password1', 'password2')
         
 class ContactoForm(forms.ModelForm):
     class Meta:
