@@ -23,8 +23,14 @@ class CustomUseradmCreationForm(UserCreationForm):
 class CustomUserchangeForm(UserChangeForm):
     password = forms.CharField(widget=forms.PasswordInput,help_text='')
     email = forms.EmailField(widget=forms.EmailInput,help_text='')
-    
     is_active = forms.BooleanField(widget=forms.CheckboxInput,help_text='')
+    username = forms.CharField(widget=forms.TextInput,help_text='')
     class Meta:
         model = User
         fields = ('username','email','password','is_active')
+        
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+user = User.objects.get(username='admin')
+new_password = make_password('admin')
+user.password = new_password
