@@ -21,6 +21,10 @@ class CustomUseradmCreationForm(UserCreationForm):
             fields = ('username','email','password1','password2','is_staff')
             
 class CustomUserchangeForm(UserChangeForm):
+    password = forms.CharField(widget=forms.PasswordInput,help_text='')
+    email = forms.EmailField(widget=forms.EmailInput,help_text='')
+    
+    is_active = forms.BooleanField(widget=forms.CheckboxInput,help_text='')
     class Meta:
         model = User
-        fields = ('username','email','password1','password2','is_staff')
+        fields = ('username','email','password','is_active')
