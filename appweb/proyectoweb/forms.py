@@ -29,8 +29,3 @@ class CustomUserchangeForm(UserChangeForm):
         model = User
         fields = ('username','email','password','is_active')
         
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import make_password
-user = User.objects.get(username='admin')
-new_password = make_password('admin')
-user.password = new_password
