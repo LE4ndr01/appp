@@ -1,0 +1,22 @@
+<!--div id="preferencia">
+  <script src= src="https://www.mercadopago.cl/integrations/v1/web-payment-checkout.js"
+  data-preference-id="{{ preference_id}}"></script>
+</div-->
+
+<script src ="https://sdk.mercadopago.com/js/v2"></script>
+
+<script>
+const mp = new MercadoPago( 'TEST-c32a8008-ef23-4063-8ef6-716e0ab832f6');
+const bricksBuilder = mp.bricks();
+
+mp.bricks().create("wallet", "wallet_container",{
+    initialization: {
+        preferenced: "{{ preference_id}}",
+        redirectMode: "modal"
+    },
+
+});
+
+</script>
+
+<div id="wallet_container"></div>

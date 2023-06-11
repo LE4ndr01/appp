@@ -12,6 +12,7 @@ import mercadopago
 import json
 
 
+
 # Create your views here.
 TEMPLATE_DIRS =(
     'os.path.join(BASE_DIR,"templates"),'
@@ -175,3 +176,28 @@ def productos(request):
 
 def apis(request):
     return render (request, 'apip.html')
+
+
+##################################
+###      Mercado Pago          ###
+##################################
+
+def home(request):
+    variables = { 
+        'mensaje':'',
+        'lista':''
+    }
+    controller = controller()
+    try:
+
+        list = controller.buscartodos()
+        variables['lista']= list
+        preferencias = controller.pagar()
+        variables['preference_id']=preferencias['response']['id']
+
+        variables['mensaje']= "Con datos"
+
+    except:
+        
+        variables['mensaje']= "Sin datos"
+    return render(request, 'core/home.html', variables)
