@@ -15,19 +15,19 @@ class Carrito:
 #  Añadir producto a carrito   #
 ################################
 
-def add_carrito(self,producto):
-    if str(producto.id) not in self.carrito.keys():
-        self.carrito[producto.id] = {
-            "producto_id":producto.id,
-            "name":producto.name,
+def add_carrito(self,Articulo):
+    if str(Articulo.id) not in self.carrito.keys():
+        self.carrito[Articulo.id] = {
+            "producto_id":Articulo.id,
+            "name":Articulo.name,
             "cantidad" : 1,
-            "precio" :  producto.precio,
-            "imagen" : producto.imagen.url,
+            "precio" :  Articulo.precio,
+            "imagen" : Articulo.imagen.url,
         }
         
     else:
-        self.carrito[producto.id]["cantidad"] =+ 1
-        self.carrito[producto.id]["precio"] =+ producto.precio
+        self.carrito[Articulo.id]["cantidad"] =+ 1
+        self.carrito[Articulo.id]["precio"] =+ Articulo.precio
     self.save()
     
 ################################
@@ -42,10 +42,10 @@ def save(self):
 #  Eliminar producto de carrito #
 #################################
 
-def eliminar(self,producto):
-    producto_id = str(producto.id)
-    if producto_id in self.carrito:
-        del self.carrito[producto_id]
+def eliminar(self,Articulo):
+    Articulo_id = str(Articulo.id)
+    if Articulo_id in self.carrito:
+        del self.carrito[Articulo_id]
         self.save()
         messages.success(self.request,'Producto eliminado de carrito')
 
@@ -53,11 +53,11 @@ def eliminar(self,producto):
 # disminuir producto de carrito #
 #################################
 
-def restar(self,producto):
-    if str(producto.id) in self.carrito.keys():
-        self.carrito[producto.id]["cantidad"] =- 1
-        self.carrito[producto.id]["precio"] =- producto.precio
-        if self.carrito[producto.id]["cantidad"] <= 0: self.eliminar(producto)
+def restar(self,Articulo):
+    if str(Articulo.id) in self.carrito.keys():
+        self.carrito[Articulo.id]["cantidad"] =- 1
+        self.carrito[Articulo.id]["precio"] =- Articulo.precio
+        if self.carrito[Articulo.id]["cantidad"] <= 0: self.eliminar(Articulo)
         self.save()
         
 

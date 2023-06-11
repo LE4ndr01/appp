@@ -9,6 +9,7 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
+    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
@@ -75,7 +76,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
+            <a href="{% url 'home' %}" class="navbar-brand ml-lg-3">
                 <h1 class="m-0 display-5 text-uppercase text-primary"><i class="fa fa-truck mr-2"></i>BUENOSAIRES</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -83,31 +84,62 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav m-auto py-0">
-                    <a href="{% url 'home' %}" class="nav-item nav-link ">Hogar</a>
+                    <a href="{% url 'home' %}" class="nav-item nav-link">Hogar</a>
                     <a href="{% url 'nosotros' %}" class="nav-item nav-link active">Nosotros</a>
                     <a href="{% url 'service' %}" class="nav-item nav-link">Servicios</a>
                     <a href="{% url 'galeria' %}" class="nav-item nav-link">galeria</a>
                     <a href="{% url 'contacto' %}" class="nav-item nav-link">Contacto</a>
+
+                    <!-- metodo para cerrar sesion y mostrar -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                            {% if user.is_superuser  %}
+                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Pagina de administracion</a></li>
+                            {% endif %}
+                            {% if user.is_staff %}
+                            <li><a href="{% url 'listar_usuarios' %}" class="dropdown-item">Listar usuarios </a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Iniciar Sesion
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'registro' %}">Registrarse</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+
+
+
+
                 </div>
-                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Consigue tu presupuesto</a>
-            </div>
         </nav>
     </div>
+
     <!-- Navbar End -->
 
 
-    <!-- Header Start -->
-    <div class="jumbotron jumbotron-fluid mb-5">
-        <div class="container text-center py-5">
-            <h1 class="text-white display-3">Nosotros</h1>
-            <div class="d-inline-flex align-items-center text-white">
-                <p class="m-0"><a class="text-white" href="/">Hogar</a></p>
-                <i class="fa fa-circle px-3"></i>
-                <p class="m-0">nosotros</p>
-            </div>
+  <!-- Header Start -->
+  <div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Nosotros</h1>
+        <div class="d-inline-flex align-items-center text-white">
+           
         </div>
     </div>
-    <!-- Header End -->
+</div>
+<!-- Header End -->
 
 
     <!-- About Start -->
