@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.contrib.auth.models import User
-from .models import Contacto
+from .models import Contacto,Articulo
 
 
 
@@ -33,3 +33,8 @@ class CustomUserchangeForm(UserChangeForm):
         model = User
         fields = ('username','email','password','is_active')
         
+class productoform(forms.ModelForm):
+       
+    class Meta:
+        model = Articulo
+        fields = '__all__'

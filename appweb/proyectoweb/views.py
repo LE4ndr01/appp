@@ -140,24 +140,24 @@ def carrito(request):
 ###      Agregar Producto      ###
 ##################################
 
-def agregar_producto(request,producto_id):
+def agregar_producto(request,Articulo_id):
     carrito = Carrito(request)
-    productos = Articulo.objects.get(id=producto_id)
-    carrito.agregar(productos)
-    messages.success(request, "Producto agregreado " + productos)
+    articulo = Articulo.objects.get(id=Articulo_id)
+    carrito.agregar(articulo)
+    messages.success(request, "Producto agregreado " + articulo)
     return redirect("galeria")
 
-def eliminar_producto(request,producto_id):
+def eliminar_producto(request,articulo_id):
     carrito = Carrito(request)
-    productos = Articulo.objects.get(id=producto_id)
-    carrito. eliminar(productos)
-    messages.success(request, "Producto eliminado " + productos)
+    articulo = Articulo.objects.get(id=articulo_id)
+    carrito. eliminar(articulo)
+    messages.success(request, "Producto eliminado " + articulo)
     return redirect("galeria")
 
-def restar_producto(request,producto_id):
+def restar_producto(request,articulo_id):
     carrito = Carrito(request)
-    productos = Articulo.objects.get(id=producto_id)
-    carrito. restar(productos)
+    articulo = Articulo.objects.get(id=articulo_id)
+    carrito. restar(articulo)
     return redirect("galeria")
 
 def limpiar_carrito(request):

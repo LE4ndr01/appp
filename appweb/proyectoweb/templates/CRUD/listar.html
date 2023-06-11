@@ -36,28 +36,30 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
         <script>
 
-            function eliminar_usuario() {
-                Swal.fire({
-                    title: 'Estas Seguro"?',
-                    text: "Esta Acccion no se puede desacer",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    CancelButtonText: 'NO, Cancelar',
-                    confirmButtonText: 'SI, Eliminar!'
-                  }).then(function(result) {
-                    if (result.isConfirmed) {
-                        window.location.href = "/eliminar_usuario/"+id+"/";
-                      
-                    }
-                  })
-            }
+            async function eliminar_usuario(id) {
+                const result = await Swal.fire({
+                  title: '¿Estás seguro?',
+                  text: 'Esta acción no se puede deshacer',
+                  icon: 'warning',
+                  timer: 3000,
+                  showCancelButton: true,
+                  cancelButtonText: 'NO, Cancelar',
+                  confirmButtonText: 'SI, Eliminar'
+                });
+              
+                if (result.isConfirmed) {
+                  window.location.href = '/eliminar_usuario/' + id + '/';
+                } else {
+                  window.location.href = '/listar_usuario/';
+                }
+              }
+              
         </script>
     
     
     </head>
     
     <body>
-    
         {% if messages %}
         {% for message in messages %}
         <script>
@@ -171,33 +173,12 @@
         <!-- Navbar End -->
 <body>
 
-    {% if messages %}
-    {% for message in messages %}
-    <script>
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            }
-          })
-    </script>
-    {% endfor %}
-    {% endif %}
-    <div class="page-content page-container" id="page-content">
+
+
+    <div class="page-content page-container responsive-md" id="page-content">
         <link href="{% static 'css/tabla.css' %}" rel="stylesheet">
-        <div class="padding">
-            <div class="d-flex justify-content-center">
+        <div class="padding responsive-md">
+            <div class="d-flex justify-content-center responsive-md">
                 <div class="col-lg-8 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
@@ -240,10 +221,10 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="btn-group" >
+                                            <div class="btn-group">
                                                 <a href="{% url 'modificar_usuario' usuario.id %}" class="btn btn-warning">Modificar</a>
-                                                &nbsp;
-                                                <a href="{% url 'eliminar_usuario' usuario.id %}"  class="btn btn-danger">Eliminar</a>
+                                                &nbsp;&nbsp;
+                                                <a href="#"  onclick="eliminar_usuario({{usuario.id}}) " class="btn btn-danger">Eliminar</a>
                                             </div>
                                         </td>
                                     </tr>

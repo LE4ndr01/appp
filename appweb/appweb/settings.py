@@ -32,7 +32,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL= '/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'Uni-form'
 
 MERCADOPAGO_PUBLIC_KEY = '#'
 MERCADOPAGO_ACCESS_TOKEN = '#'
@@ -101,7 +101,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3307',
+        'PORT': '3306',
     },
 }
 
