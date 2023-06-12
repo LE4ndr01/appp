@@ -89,7 +89,18 @@
                     <a href="{% url 'galeria' %}" class="nav-item nav-link active">galeria</a>
                     <a href="{% url 'contacto' %}" class="nav-item nav-link">Contacto</a>
                 </div>
-                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Consigue tu presupuesto</a>
+                {% if user.is_authenticated and user.is_staff %}
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="visually-hidden">Inventario</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Lista Inventario</a></li>
+                      <li><a class="dropdown-item" href="#">Agregar Inventario</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                {% endif %}
+                    </ul>
+                  </div>
             </div>
         </nav>
     </div>
@@ -110,48 +121,33 @@
     <!-- Header End -->
 
 
-    <!-- Pricing Plan Start -->
-    <div class="container-fluid pt-5">
-        <div class="container text-center">
-            <div class="pb-2">
-                <h6 class="text-primary text-uppercase font-weight-bold">Productos disponibles</h6>
-                <h1 class="mb-4">Categoria de aires acondicionados</h1>
-            </div>
-                
-                    {% for p in lista %}
-                    <div class="row text-center">
-                        <div class="col-md-4 mb-5 mx-auto">
-                            <div class="bg-secondary">
-                                <div class="text-center p-4">
-                                    <h1 class="display-4 mb-0">
-                                        <small class="align-top text-muted font-weight-medium" style="font-size: 15px; line-height: 30px;">
-                                            <img src="{% static 'img/producto_1.jpg' %}" alt="Texto alternativo de la imagen" style="width: 200px; height: 200px;"></img>
-                                        </small>
-                                    </h1>
-                                </div>
-                                <div class="bg-primary text-center p-4">
-                                    <h3 class="m-0">Basico</h3>
-                                </div>
-                                <div class="d-flex flex-column align-items-center py-4">
-                                    <p>{{p.nombre}}</p>
-                                    <p>{{p.stock}}</p>
-                                    <p>${{p.precio}}</p>
-                                    <a href="" class="btn btn-primary py-2 px-4 my-2">COMPRAR</a>
-                                </div>
-                            </div>
-                        </div>
-                    
-
-
-                    {% endfor %}
-                   
+    {% for p in entity %}
+    <div class="row text-center">
+        <div class="col-md-4 mb-5 mx-auto">
+            <div class="bg-secondary">
+                {% if p.imagen %}
+                <div class="text-center p-4">
+                    <h1 class="display-4 mb-0">
+                        <small class="align-top text-muted font-weight-medium" style="font-size: 15px; line-height: 30px;">
+                            <img src="{{ p.imagen.url }}" style="width: 200px; height: 200px;">
+                        </small>
+                    </h1>
                 </div>
-
+                {% endif %}
+                <div class="bg-primary text-center p-4">
+                    <h3 class="m-0">Basico</h3>
+                </div>
+                <div class="d-flex flex-column align-items-center py-4">
+                    <p>{{ p.nombre }}</p>
+                    <p>{{ p.stock }}</p>
+                    <p>${{ p.precio }}</p>
+                    <a href="" class="btn btn-primary py-2 px-4 my-2">COMPRAR</a>
+                </div>
             </div>
         </div>
     </div>
+    {% endfor %}
     
-    <!-- Pricing Plan End -->
 
 
     <!-- Testimonial Start -->

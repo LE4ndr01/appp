@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.http import Http404
 from django.contrib.auth import login as auth_login,authenticate
 from django.contrib import messages
 from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm
@@ -10,7 +11,7 @@ from django.contrib.auth.models import User
 from .carrito import Carrito
 import mercadopago
 import json
-
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -29,11 +30,20 @@ def service(request):
     return render(request,"service.html")
 
 def galeria(request):
-    productos= Articulo.objects.all()
-    datos= {
-        'lista': productos,
+    articulos = Articulo.objects.all()
+    page = request.GET.get('page', 1)
+    
+    try:
+        paginator = Paginator(articulos, 10)
+        articulos = paginator.page(page)
+    except:
+        raise Http404
+    
+    datos = {
+        'entity': articulos,
     }
-    return render(request,"galeria.html",datos)
+    return render(request, "galeria.html", datos)
+
 
 def login(request):
     
