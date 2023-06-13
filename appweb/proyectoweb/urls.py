@@ -20,4 +20,5 @@ urlpatterns = [
     path('api',api,name="api"),
     path('productos',productos,name="productos"),
     path('apip/',apis,name="apip"),
+    path('listar_productos/',listar_productos,name="listar_productos"),
     ]

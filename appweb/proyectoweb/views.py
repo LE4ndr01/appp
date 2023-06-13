@@ -134,7 +134,21 @@ def eliminar_usuario(request, id):
     usuario.delete()
     messages.success(request, 'Usuario eliminado exitosamente')
     return redirect('listar_usuarios')
+<<<<<<< HEAD
+=======
+ 
+ ################################
+ ###  CRUD PRODUCTOS          ###
+ ################################
+ 
+###  Listar usuarios ###
 
+@login_required()
+def listar_productos(request):
+    articulo = Articulo.objects.all()
+    return render(request,"Crud/listar_producto.html", {'articulo':articulo}) 
+    
+>>>>>>> 533ac4c0a18e5c9c40c51288df460c451a87d2f8
 
 ##################################
 ##     Carrito de compras       ##
