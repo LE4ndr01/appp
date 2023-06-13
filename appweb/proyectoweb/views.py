@@ -135,7 +135,7 @@ def eliminar_usuario(request, id):
     usuario.delete()
     messages.success(request, 'Usuario eliminado exitosamente')
     return redirect('listar_usuarios')
-<<<<<<< HEAD
+
 
  
  ################################
