@@ -22,4 +22,5 @@ urlpatterns = [
     path('apip/',apis,name="apip"),
     path('listar_productos/',listar_productos,name="listar_productos"),
     path('agregar_categoria/',agregar_categoria,name="agregar_categoria"),
+    path('vendedor/',vendedor,name="vendedor"),
     ]
