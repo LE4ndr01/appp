@@ -37,7 +37,6 @@ class CustomUserchangeForm(UserChangeForm):
         fields = ('username','email','password','is_active')
         
 class productoform(forms.ModelForm):
-       
     class Meta:
         model = Articulo
         fields = '__all__'
