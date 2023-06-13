@@ -29,8 +29,6 @@ opciones_consulta = [
     [2,"sugerencia"],
 ]
 
-
-
 class Contacto(models.Model):
     nombre = models.CharField(max_length=100)
     correo = models.EmailField()

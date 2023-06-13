@@ -1,4 +1,9 @@
 import mercadopago
+<<<<<<< HEAD
+
+
+
+=======
 from zeep import Client
 from .producto import *
 
@@ -23,8 +28,9 @@ class Controller:
         return lista_productos
 
 '''
+>>>>>>> 877f62365871c31cf82c1bd6c513737e054b58d6
 def pagar(self):
-sdk = mercadopago.SDK("TEST-115372419182236-052322-eead7ce47668501c58aa4f549db9c13c-1381493535")
+sdk = mercadopago.SDK("TEST-897243312298306-061023-3c50ea005623944e7672975229c97897-1381947166")
 
 
 #vendedor
@@ -32,16 +38,16 @@ sdk = mercadopago.SDK("TEST-115372419182236-052322-eead7ce47668501c58aa4f549db9c
 preference_data = {
     "items": [
         {
-            "producto":"",
+            "producto":"Aire Acondicionado 1",
             "id":1,
-            "description": "",
+            "description": "AACC1",
             "quantity":2,
             "unit_price": 180000 
         }
         {
-            "producto":"",
+            "producto":"Aire Acondicionado 2",
             "id":2,
-            "description": "",
+            "description": "AACC2",
             "quantity":1,
             "unit_price": 220000 
         }

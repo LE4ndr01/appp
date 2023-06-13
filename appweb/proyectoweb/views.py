@@ -140,11 +140,11 @@ def eliminar_usuario(request, id):
     return redirect('listar_usuarios')
 
 
- 
- ################################
- ###  CRUD PRODUCTOS          ###
- ################################
- 
+
+################################
+###  CRUD PRODUCTOS          ###
+################################
+
 ###  Listar usuarios ###
 
 @login_required()
@@ -253,6 +253,29 @@ def home(request):
         variables['mensaje']= "Sin datos"
     return render(request, 'core/home.html', variables)
 
+<<<<<<< HEAD
+#------------------------------------------------------
+
+def contacto_view(request):
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            correo = form.cleaned_data['correo']
+            mensaje = form.cleaned_data['mensaje']
+
+            contacto = Contacto(nombre=nombre, correo=correo, mensaje=mensaje)
+            contacto.save()
+
+            return redirect('contacto2')
+    else:
+        form = ContactoForm()
+
+    return render(request, 'contacto.html',{'form':form})
+
+def vendedor(request):
+    return render(request,"vendedor.html")
+=======
 ################################################################
 
 
@@ -280,3 +303,4 @@ def remove_from_cart(request, cart_item_id):
     cart_item = CartItem.objects.get(pk=cart_item_id)
     cart_item.delete()
     return redirect('cart')
+>>>>>>> 877f62365871c31cf82c1bd6c513737e054b58d6

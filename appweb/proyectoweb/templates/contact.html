@@ -118,7 +118,7 @@
                     <a href="{% url 'home' %}" class="nav-item nav-link">Inicio</a>
                     <a href="{% url 'nosotros' %}" class="nav-item nav-link">Nosotros</a>
                     <a href="{% url 'service' %}" class="nav-item nav-link">Servicios</a>
-                    <a href="{% url 'galeria' %}" class="nav-item nav-link">Galeria</a>
+                    <a href="{% url 'galeria' %}" class="nav-item nav-link">Productos</a>
                     <a href="{% url 'contacto2' %}" class="nav-item nav-link active">Contacto</a>
 
                     <!-- metodo para cerrar sesion y mostrar -->
@@ -169,36 +169,29 @@
     </div>
     <!-- Header End -->
 
-    <div class="col-lg-5" align-items="center">
-        <div class="bg-primary py-5 px-4 px-sm-5 ">
-            <form class="py-5">
+    <div class="col-lg-12" style="display: flex; justify-content: center; align-items: center;">
+        <div class="bg-primary py-5 px-4 px-sm-5">
+            <form method="POST" action="{% url 'contacto2' %}">
+                {% csrf_token %}
                 <h1>Deseas Contactarnos?</h1>
                 <br>
                 <br>
                 <div class="form-group">
-                    <input type="text" class="form-control border-0 p-4" placeholder="Tu Nombre"
-                        required="required" />
+                    {{ form.nombre }}
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control border-0 p-4" placeholder="Tu Email"
-                        required="required" />
+                    {{ form.correo }}
                 </div>
                 <div class="form-group">
-                    <input type="textbox" class="form-control border-0 p-4" placeholder="Ingresa Tu mensaje"
-                        required="required" />
+                    {{ form.mensaje }}
                 </div>
                 <div>
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form }}
-                        <div>
-                            <button type="submit" class="btn btn-dark btn-block border-0 py-3">Enviar</button>
-                        </div>
-                    </form>  
+                    <button type="submit" class="btn btn-dark btn-block border-0 py-3">Enviar</button>
                 </div>
             </form>
         </div>
     </div>
+    
 
     <!--<div id="contenedor" style="padding: 50px">
         <div class="card">

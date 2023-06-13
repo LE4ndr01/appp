@@ -22,8 +22,12 @@ urlpatterns = [
     path('apip/',apis,name="apip"),
     path('listar_productos/',listar_productos,name="listar_productos"),
     path('agregar_categoria/',agregar_categoria,name="agregar_categoria"),
+<<<<<<< HEAD
+    path('vendedor/',vendedor,name="vendedor"),
+=======
     path('add-to-cart/<int:id_producto>/', add_to_cart, name='add_to_cart'),
     path('cart/', cart_view, name='cart'),
     path('cart/add/<int:id_producto>/', add_to_cart, name='add_to_cart'),
     path('cart/remove/<int:cart_item_id>/', remove_from_cart, name='remove_from_cart'),
+>>>>>>> 877f62365871c31cf82c1bd6c513737e054b58d6
     ]
