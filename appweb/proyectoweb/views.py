@@ -2,9 +2,10 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import Http404
 from django.contrib.auth import login as auth_login,authenticate
 from django.contrib import messages
-from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm
+from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm,CategoriaForm
 from django.http import HttpResponse
-from .models import Contacto,Articulo
+from .models import Contacto,Articulo,Categoria
+from .models import Contacto, Articulo
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
@@ -19,6 +20,9 @@ TEMPLATE_DIRS =(
     'os.path.join(BASE_DIR,"templates"),'
     
 )
+
+def contacto2(request):
+    return render (request, "contact.html")
 
 def index(request):
     return render(request,"index.html")
@@ -122,7 +126,6 @@ def modificar_usuario(request, id):
             return redirect('listar_usuarios')
         data['form'] = formulario
         
-  
     return render(request, 'Crud/modificar.html', data)
 
 ### Eliminar usuario ###
@@ -132,12 +135,37 @@ def eliminar_usuario(request, id):
     usuario.delete()
     messages.success(request, 'Usuario eliminado exitosamente')
     return redirect('listar_usuarios')
-    
-    
 
 
-    
+ 
+ ################################
+ ###  CRUD PRODUCTOS          ###
+ ################################
+ 
+###  Listar usuarios ###
 
+@login_required()
+def listar_productos(request):
+    articulo = Articulo.objects.all()
+    return render(request,"Crud/listar_producto.html", {'articulo':articulo}) 
+
+################################
+###      CRUD CATEGORIAS     ###
+################################ 
+
+@login_required
+def agregar_categoria(request):
+    form = CategoriaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Categoría agregada')
+        return redirect('listar_productos')  
+
+    context = {
+        'form': form
+    }
+    return render(request, 'Crud/agregar_categoria.html', context)
+    
 
 ##################################
 ##     Carrito de compras       ##

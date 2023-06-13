@@ -11,6 +11,7 @@ urlpatterns = [
     path('galeria/', galeria, name="galeria"),
     path('registro/', registro, name="registro"),
     path('contacto/',contacto,name="contacto"),
+    path('contacto2/',contacto2,name="contacto2"),
     path('agregar_usuario/',agregar_usuario,name="agregar_usuario"),
     path('listar_usuarios/',listar_usuarios,name="listar_usuarios"),
     path('modificar_usuario/<int:id>/',modificar_usuario,name="modificar_usuario"),
@@ -19,4 +20,6 @@ urlpatterns = [
     path('api',api,name="api"),
     path('productos',productos,name="productos"),
     path('apip/',apis,name="apip"),
+    path('listar_productos/',listar_productos,name="listar_productos"),
+    path('agregar_categoria/',agregar_categoria,name="agregar_categoria"),
     ]

@@ -75,7 +75,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
+            <a href="{% url 'home' %}" class="navbar-brand ml-lg-3">
                 <h1 class="m-0 display-5 text-uppercase text-primary"><i class="fa fa-truck mr-2"></i>BUENOSAIRES</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -83,28 +83,62 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav m-auto py-0">
-                    <a href="{% url 'home' %}" class="nav-item nav-link ">Hogar</a>
-                    <a href="{% url 'nosotros' %}" class="nav-item nav-link ">Nosotros</a>
+                    <a href="{% url 'home' %}" class="nav-item nav-link">Inicio</a>
+                    <a href="{% url 'nosotros' %}" class="nav-item nav-link">Nosotros</a>
                     <a href="{% url 'service' %}" class="nav-item nav-link">Servicios</a>
-                    <a href="{% url 'galeria' %}" class="nav-item nav-link active">galeria</a>
-                    <a href="{% url 'contacto' %}" class="nav-item nav-link">Contacto</a>
+                    <a href="{% url 'galeria' %}" class="nav-item nav-link active">Productos</a>
+                    <a href="{% url 'contacto2' %}" class="nav-item nav-link">Contacto</a>
+
+                    <!-- metodo para cerrar sesion y mostrar -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                            {% if user.is_superuser  %}
+                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Pagina de administracion</a></li>
+                            {% endif %}
+                            {% if user.is_staff %}
+                            <li><a href="{% url 'listar_usuarios' %}" class="dropdown-item">Listar usuarios </a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Iniciar Sesion
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'registro' %}">Registrarse</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
                 </div>
+
                 {% if user.is_authenticated and user.is_staff %}
                 <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                       <span class="visually-hidden">Inventario</span>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Lista Inventario</a></li>
+                      <li><a class="dropdown-item" href="{%url 'listar_productos'%}">Lista Inventario</a></li>
                       <li><a class="dropdown-item" href="#">Agregar Inventario</a></li>
                       <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="{%url 'agregar_categoria'%}">Agregar Categoria</a></li>
                 {% endif %}
                     </ul>
                   </div>
+
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
+
 
 
     <!-- Header Start -->
@@ -135,7 +169,7 @@
                 </div>
                 {% endif %}
                 <div class="bg-primary text-center p-4">
-                    <h3 class="m-0">Basico</h3>
+                    <h3 class="m-0">{{p.Categoria | title}}</h3>
                 </div>
                 <div class="d-flex flex-column align-items-center py-4">
                     <p>{{ p.nombre }}</p>
@@ -214,10 +248,10 @@
             <div class="col-lg-7 col-md-6">
                 <div class="row">
                     <div class="col-md-6 mb-5">
-                        <h3 class="text-primary mb-4">Get In Touch</h3>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                        <h3 class="text-primary mb-4">Ponerse en contacto</h3>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Lorenzo #1677 Puente Alto</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+56965284777</p>
+                        <p><i class="fa fa-envelope mr-2"></i>pab.toro@gmail.com</p>
                         <div class="d-flex justify-content-start mt-4">
                             <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="bi bi-twitter"></i></a>
                             <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="bi bi-facebook"></i></a>
@@ -226,42 +260,16 @@
                         </div>
                     </div>
                     <div class="col-md-6 mb-5">
-                        <h3 class="text-primary mb-4">Quick Links</h3>
+                        <h3 class="text-primary mb-4">Enlaces Rápidos</h3>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Pricing Plan</a>
-                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                            <a class="text-white mb-2" href="{% url 'home' %}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href="{% url 'nosotros' %}"><i class="fa fa-angle-right mr-2"></i>Nosotros</a>
+                            <a class="text-white mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Servicio</a>
+                            <a class="text-white mb-2" href="{% url 'galeria' %}"><i class="fa fa-angle-right mr-2"></i>Productos</a>
+                            <a class="text-white" href="{% url 'contacto2' %}"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-5 col-md-6 mb-5">
- 
-                    </div>
-                </div>
-            </div>
-        
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: #3E3E4E !important;">
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                
-            <div class="col-lg-6 text-center text-md-right">
-                <ul class="nav d-inline-flex">
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Terms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Help</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>

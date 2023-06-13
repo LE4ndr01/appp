@@ -1,9 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.contrib.auth.models import User
-from .models import Contacto,Articulo
+from .models import Contacto,Articulo,Categoria
 
-
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['nombre']
 
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput,help_text='')
@@ -34,7 +37,6 @@ class CustomUserchangeForm(UserChangeForm):
         fields = ('username','email','password','is_active')
         
 class productoform(forms.ModelForm):
-       
     class Meta:
         model = Articulo
         fields = '__all__'
