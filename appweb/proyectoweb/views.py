@@ -4,15 +4,16 @@ from django.contrib.auth import login as auth_login,authenticate
 from django.contrib import messages
 from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm,CategoriaForm
 from django.http import HttpResponse
-from .models import Contacto,Articulo,Categoria
+from .models import Contacto,Articulo,Categoria,CartItem
 from .models import Contacto, Articulo
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
-from .carrito import Carrito
+from .producto import *
 import mercadopago
 import json
 from django.core.paginator import Paginator
+from .controller import *
 
 
 # Create your views here.
@@ -50,8 +51,10 @@ def galeria(request):
 
 
 def login(request):
-    
-    messages.success(request, 'Bienvenido')
+    if User.is_authenticated:
+        messages.success(request, 'Bienvenido')
+    else:
+        messages.error(request,'Error al authenticar')
     return render(request,"registration/login.html")
 
 def registro(request):
@@ -146,8 +149,18 @@ def eliminar_usuario(request, id):
 
 @login_required()
 def listar_productos(request):
-    articulo = Articulo.objects.all()
-    return render(request,"Crud/listar_producto.html", {'articulo':articulo}) 
+    controller = Controller()
+    data = {}
+    try:
+        productos = controller.buscarproducto()
+        data = {
+            'producto': productos
+        }
+    except Exception as e:
+        print(e)
+
+    return render(request, "Crud/listar_producto.html", data)
+
 
 ################################
 ###      CRUD CATEGORIAS     ###
@@ -240,6 +253,7 @@ def home(request):
         variables['mensaje']= "Sin datos"
     return render(request, 'core/home.html', variables)
 
+<<<<<<< HEAD
 #------------------------------------------------------
 
 def contacto_view(request):
@@ -261,3 +275,32 @@ def contacto_view(request):
 
 def vendedor(request):
     return render(request,"vendedor.html")
+=======
+################################################################
+
+
+
+@login_required
+def cart_view(request):
+    cart_items = CartItem.objects.filter(user=request.user)
+    total_price = sum(item.get_total_price() for item in cart_items)
+    context = {
+        'cart_items': cart_items,
+        'total_price': total_price
+    }
+    return render(request, 'cart.html', context)
+
+
+def add_to_cart(request, id_producto):
+    product = Articulo.objects.get(pk=id_producto)
+    cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+    return redirect('cart')
+
+def remove_from_cart(request, cart_item_id):
+    cart_item = CartItem.objects.get(pk=cart_item_id)
+    cart_item.delete()
+    return redirect('cart')
+>>>>>>> 877f62365871c31cf82c1bd6c513737e054b58d6

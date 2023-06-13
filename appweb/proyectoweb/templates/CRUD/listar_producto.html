@@ -188,29 +188,22 @@
                                 <thead style="color:black">
                                     <tr>
                                         <th>#</th>
-                                        <th>Producto</th>
+                                        <th>Nombre</th>
+                                        <th>Marca</th>
                                         <th>Descripcion</th>
-                                        <th>precio</th>
-                                        <th>stock</th>
-                                        <th>Categoria</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
                                     </tr>
                                 </thead>
                                 <tbody style="color:black;font-weight: bold;">
-                                    {% for p in articulo %}
+                                    {% for p in producto %}
                                     <tr>
                                         <td>{{ forloop.counter }}</td>
-                                        <td>{{ p.nombre | title}}</td>
-                                        <td>{{ p.descripcion | title }}</td>
+                                        <td>{{ p.nombre  | title}}</td>
+                                        <td>{{ p.marca | title }}</td>
+                                        <td>{{p.descripcion}}</td>
                                         <td>{{ p.precio|floatformat:0|intcomma }}</td>
                                         <td>{{p.stock}}</td>
-                                        <td>{{p.Categoria | title}}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a href="#" class="btn btn-warning">Modificar</a>
-                                                &nbsp;&nbsp;
-                                                <a href="#"  onclick="eliminar_usuario({{usuario.id}}) " class="btn btn-danger">Eliminar</a>
-                                            </div>
-                                        </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Categoria(models.Model):
@@ -35,3 +36,15 @@ class Contacto(models.Model):
     mensage = models.TextField()
     def __str__(self):
         return self.nombre
+    
+class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Articulo, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def get_total_price(self):
+        return self.product.precio * self.quantity
+
+    def __str__(self):
+        return f"{self.product.nombre} ({self.quantity})"
+
