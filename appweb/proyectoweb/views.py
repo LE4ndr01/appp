@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import Http404
 from django.contrib.auth import login as auth_login,authenticate
 from django.contrib import messages
-from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm
+from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm,CategoriaForm
 from django.http import HttpResponse
-from .models import Contacto,Articulo
+from .models import Contacto,Articulo,Categoria
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
@@ -143,6 +143,23 @@ def eliminar_usuario(request, id):
 def listar_productos(request):
     articulo = Articulo.objects.all()
     return render(request,"Crud/listar_producto.html", {'articulo':articulo}) 
+
+################################
+###      CRUD CATEGORIAS     ###
+################################ 
+
+@login_required
+def agregar_categoria(request):
+    form = CategoriaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Categoría agregada')
+        return redirect('listar_productos')  
+
+    context = {
+        'form': form
+    }
+    return render(request, 'Crud/agregar_categoria.html', context)
     
 
 ##################################
