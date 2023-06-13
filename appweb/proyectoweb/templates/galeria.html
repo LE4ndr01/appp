@@ -95,7 +95,7 @@
                       <span class="visually-hidden">Inventario</span>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Lista Inventario</a></li>
+                      <li><a class="dropdown-item" href="{%url 'listar_productos'%}">Lista Inventario</a></li>
                       <li><a class="dropdown-item" href="#">Agregar Inventario</a></li>
                       <li><hr class="dropdown-divider"></li>
                 {% endif %}
@@ -135,7 +135,7 @@
                 </div>
                 {% endif %}
                 <div class="bg-primary text-center p-4">
-                    <h3 class="m-0">Basico</h3>
+                    <h3 class="m-0">{{p.Categoria | title}}</h3>
                 </div>
                 <div class="d-flex flex-column align-items-center py-4">
                     <p>{{ p.nombre }}</p>
