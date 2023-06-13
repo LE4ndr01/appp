@@ -1,4 +1,28 @@
 import mercadopago
+from zeep import Client
+from .producto import *
+
+
+class Controller:
+    wsdl = 'http://localhost:8080/Webaires/wsAC?wsdl'
+    cliente = Client(wsdl)
+
+    def buscarproducto(self):
+        productos = self.cliente.service.ListaAC()
+        lista_productos = []
+        for p in productos:
+            producto = Producto(
+                id_producto=p['codigo'],
+                nombre=p['nombre'],
+                marca=p['marca'],
+                descripcion='',
+                precio=p['precio'],
+                stock=p['stock']
+            )
+            lista_productos.append(producto)
+        return lista_productos
+
+'''
 def pagar(self):
 sdk = mercadopago.SDK("TEST-115372419182236-052322-eead7ce47668501c58aa4f549db9c13c-1381493535")
 
@@ -32,4 +56,6 @@ preference_data = {
 
 preference_responce = sdk.preference().create(preference_data)
 #preference = preference_response["responce"]
-return preference_responce
+return preference_responce  
+'''
+

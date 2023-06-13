@@ -9,10 +9,11 @@ from .models import Contacto, Articulo
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
-from .carrito import Carrito
+from .producto import *
 import mercadopago
 import json
 from django.core.paginator import Paginator
+from .controller import *
 
 
 # Create your views here.
@@ -50,8 +51,10 @@ def galeria(request):
 
 
 def login(request):
-    
-    messages.success(request, 'Bienvenido')
+    if User.is_authenticated:
+        messages.success(request, 'Bienvenido')
+    else:
+        messages.error(request,'Error al authenticar')
     return render(request,"registration/login.html")
 
 def registro(request):
@@ -146,8 +149,18 @@ def eliminar_usuario(request, id):
 
 @login_required()
 def listar_productos(request):
-    articulo = Articulo.objects.all()
-    return render(request,"Crud/listar_producto.html", {'articulo':articulo}) 
+    controller = Controller()
+    data = {}
+    try:
+        productos = controller.buscarproducto()
+        data = {
+            'producto': productos
+        }
+    except Exception as e:
+        print(e)
+
+    return render(request, "Crud/listar_producto.html", data)
+
 
 ################################
 ###      CRUD CATEGORIAS     ###
