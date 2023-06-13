@@ -4,11 +4,8 @@ from django.contrib.auth import login as auth_login,authenticate
 from django.contrib import messages
 from .forms import CustomUserCreationForm,ContactoForm,CustomUseradmCreationForm,CustomUserchangeForm,CategoriaForm
 from django.http import HttpResponse
-<<<<<<< HEAD
 from .models import Contacto,Articulo,Categoria
-=======
 from .models import Contacto, Articulo
->>>>>>> 6c020f3b5119e636d4912064044d603a6d304d8d
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
@@ -139,7 +136,7 @@ def eliminar_usuario(request, id):
     messages.success(request, 'Usuario eliminado exitosamente')
     return redirect('listar_usuarios')
 <<<<<<< HEAD
-=======
+
  
  ################################
  ###  CRUD PRODUCTOS          ###
@@ -169,7 +166,6 @@ def agregar_categoria(request):
     }
     return render(request, 'Crud/agregar_categoria.html', context)
     
->>>>>>> 533ac4c0a18e5c9c40c51288df460c451a87d2f8
 
 ##################################
 ##     Carrito de compras       ##
