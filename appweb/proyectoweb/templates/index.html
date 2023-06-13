@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>AiresAcondicionados</title>
+    <title>Inicio</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -107,10 +107,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav m-auto py-0">
-                    <a href="{% url 'home' %}" class="nav-item nav-link active">Hogar</a>
+                    <a href="{% url 'home' %}" class="nav-item nav-link active">Inicio</a>
                     <a href="{% url 'nosotros' %}" class="nav-item nav-link">Nosotros</a>
                     <a href="{% url 'service' %}" class="nav-item nav-link">Servicios</a>
-                    <a href="{% url 'galeria' %}" class="nav-item nav-link">galeria</a>
+                    <a href="{% url 'galeria' %}" class="nav-item nav-link">Galeria</a>
                     <a href="{% url 'contacto' %}" class="nav-item nav-link">Contacto</a>
 
                     <!-- metodo para cerrar sesion y mostrar -->
@@ -142,14 +142,10 @@
                         </ul>
                     </li>
                     {% endif %}
-
-
-
-
                 </div>
+            </div>
         </nav>
     </div>
-
     <!-- Navbar End -->
 
 
@@ -281,7 +277,7 @@
                         <h6 class="text-white font-weight-medium m-0">Despachos en la Empresa</h6>
                     </div>
                     <p>Seguridad y confianza a nuestros clientes</p>
-                    <a class="border-bottom text-decoration-none" href="">Leer Más</a>
+
                 </div>
                 <div class="col-lg-3 col-md-6 text-center mb-5">
                     <div class="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -289,7 +285,7 @@
                         <h6 class="text-white font-weight-medium m-0">Despacho a Domicilio</h6>
                     </div>
                     <p>Seguridad y confianza a nuestros clientes</p>
-                    <a class="border-bottom text-decoration-none" href="">Leer Más</a>
+
                 </div>
                 <div class="col-lg-3 col-md-6 text-center mb-5">
                     <div class="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -297,7 +293,7 @@
                         <h6 class="text-white font-weight-medium m-0">Transporte</h6>
                     </div>
                     <p>Seguridad y confianza a nuestros clientes</p>
-                    <a class="border-bottom text-decoration-none" href="">Leer Más</a>
+
                 </div>
                 <div class="col-lg-3 col-md-6 text-center mb-5">
                     <div class="d-flex align-items-center justify-content-center bg-primary mb-4 p-4">
@@ -305,7 +301,7 @@
                         <h6 class="text-white font-weight-medium m-0">Cargos adicionales</h6>
                     </div>
                     <p>Seguridad y confianza a nuestros clientes</p>
-                    <a class="border-bottom text-decoration-none" href="">Leer Más</a>
+
                 </div>
             </div>
         </div>
@@ -318,24 +314,19 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <img class="img-fluid w-100" src="{% static 'img/camion_4.jpg' %}" alt="" style="width:250px;">
+                    <img class="img-fluid w-100" src="{% static 'img/descarga.jpeg' %}" alt="">
                 </div>
                 <div class="col-lg-7 py-5 py-lg-0">
-                    <h6 class="text-primary text-uppercase font-weight-bold">POR QUÉ ELEGIRNOS</h6>
-                    <h1 class="mb-4">Servicios logísticos más rápidos, seguros y confiables</h1>
-                    <p class="mb-4">Durante los años de servicios nuestros clientes se encuentran satisfechos por
-                        nuestra calidad y compromiso.</p>
+                    <h6 class="text-primary text-uppercase font-weight-bold">Nuestros Servicios</h6>
+                    <h1 class="mb-4">El mejor servicio del mercado</h1>
+                    <p class="mb-4">“Buenos Aires” Tenemos una amplia experiencia, adquirida durante años de ejercicio profesional, lo que le permite brindar un servicio de calidad, rápido y eficiente.</p>
                     <ul class="list-inline">
-                        <li>
-                            <h6><i class="far fa-dot-circle text-primary mr-3"></i>Mejor en la industria</h6>
-                        <li>
-                            <h6><i class="far fa-dot-circle text-primary mr-3"></i>Servicios de emergencia</h6>
-                        </li>
-                        <li>
-                            <h6><i class="far fa-dot-circle text-primary mr-3"></i>Atención al cliente 24/7</h6>
-                        </li>
+                        <li><h6><i class="far fa-dot-circle text-primary mr-3"></i>* Asesoría en proyectos a edificios u oficinas.</h6>
+                        <li><h6><i class="far fa-dot-circle text-primary mr-3"></i>* Venta de equipos de aire acondicionados.</h6></li>
+                        <li><h6><i class="far fa-dot-circle text-primary mr-3"></i>* Servicio de Instalación.</h6></li>
+                        <li><h6><i class="far fa-dot-circle text-primary mr-3"></i>* Servicio de Mantención Preventiva y Correctiva.</h6></li>
                     </ul>
-                    <a href="" class="btn btn-primary mt-3 py-2 px-4">Aprender más</a>
+                    
                 </div>
             </div>
         </div>
@@ -427,8 +418,8 @@
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="text-center pb-2">
-                <h6 class="text-primary text-uppercase font-weight-bold">Delivery Team</h6>
-                <h1 class="mb-4">Meet Our Delivery Team</h1>
+                <h6 class="text-primary text-uppercase font-weight-bold">Nuestros colaboradores</h6>
+                <h1 class="mb-4">Conoce a nuestro equipo “Buenos Aires”</h1>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -436,8 +427,8 @@
                         <img class="card-img-top" src="{% static 'img/team-1.jpg' %} " alt="">
                         <div class="card-body text-center p-0">
                             <div class="team-text d-flex flex-column justify-content-center bg-secondary">
-                                <h5 class="font-weight-bold">Full Name</h5>
-                                <span>Designation</span>
+                                <h5 class="font-weight-bold">Fernando Gutierrez</h5>
+                                <span>Asesoría en proyecto</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
                                 <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
@@ -456,8 +447,8 @@
                         <img class="card-img-top" src="{% static 'img/team-2.jpg' %}" alt="">
                         <div class="card-body text-center p-0">
                             <div class="team-text d-flex flex-column justify-content-center bg-secondary">
-                                <h5 class="font-weight-bold">Full Name</h5>
-                                <span>Designation</span>
+                                <h5 class="font-weight-bold">Pablo Toro</h5>
+                                <span>Venta de equipos de aire acondicionados</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
                                 <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
@@ -476,8 +467,8 @@
                         <img class="card-img-top" src="{% static 'img/team-3.jpg' %}" alt="">
                         <div class="card-body text-center p-0">
                             <div class="team-text d-flex flex-column justify-content-center bg-secondary">
-                                <h5 class="font-weight-bold">Full Name</h5>
-                                <span>Designation</span>
+                                <h5 class="font-weight-bold">Claudia Tellez</h5>
+                                <span>Servicio de Instalación</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
                                 <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
@@ -496,8 +487,8 @@
                         <img class="card-img-top" src="{% static 'img/team-4.jpg' %}" alt="">
                         <div class="card-body text-center p-0">
                             <div class="team-text d-flex flex-column justify-content-center bg-secondary">
-                                <h5 class="font-weight-bold">Full Name</h5>
-                                <span>Designation</span>
+                                <h5 class="font-weight-bold">Leandro Suarez</h5>
+                                <span>Servicio de Mantención Preventiva y Correctiva</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
                                 <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
@@ -515,142 +506,6 @@
         </div>
     </div>
     <!-- Team End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center pb-2">
-                <h6 class="text-primary text-uppercase font-weight-bold">Testimonial</h6>
-                <h1 class="mb-4">Our Clients Say</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="{% static 'img/testimonial-1.jpg' %}"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ml-3">
-                            <h6 class="font-weight-semi-bold m-0">Client Name</h6>
-                            <small>- Profession</small>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
-                        ipsum sanct clita</p>
-                </div>
-                <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="{% static 'img/testimonial-2.jpg' %}"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ml-3">
-                            <h6 class="font-weight-semi-bold m-0">Client Name</h6>
-                            <small>- Profession</small>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
-                        ipsum sanct clita</p>
-                </div>
-                <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="{% static 'img/testimonial-3.jpg' %}"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ml-3">
-                            <h6 class="font-weight-semi-bold m-0">Client Name</h6>
-                            <small>- Profession</small>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
-                        ipsum sanct clita</p>
-                </div>
-                <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="{% static 'img/testimonial-4.jpg' %}"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ml-3">
-                            <h6 class="font-weight-semi-bold m-0">Client Name</h6>
-                            <small>- Profession</small>
-                        </div>
-                    </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
-                        ipsum sanct clita</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
-
-    <!-- Blog Start -->
-    <div class="container-fluid pt-5">
-        <div class="container">
-            <div class="text-center pb-2">
-                <h6 class="text-primary text-uppercase font-weight-bold">Our Blog</h6>
-                <h1 class="mb-4">Latest From Blog</h1>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-5">
-                    <div class="position-relative">
-                        <img class="img-fluid w-100" src="{% static 'img/blog-1.jpg' %}" alt="">
-                        <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle"
-                            style="width: 60px; height: 60px; bottom: -30px; right: 30px;">
-                            <h4 class="font-weight-bold mb-n1">01</h4>
-                            <small class="text-white text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <div class="bg-secondary" style="padding: 30px;">
-                        <div class="d-flex mb-3">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" style="width: 40px; height: 40px;"
-                                    src="{% static 'img/user.jpg' %}" alt="">
-                                <a class="text-muted ml-2" href="">John Doe</a>
-                            </div>
-                            <div class="d-flex align-items-center ml-4">
-                                <i class="far fa-bookmark text-primary"></i>
-                                <a class="text-muted ml-2" href="">Web Design</a>
-                            </div>
-                        </div>
-                        <h4 class="font-weight-bold mb-3">Kasd tempor diam sea justo dolor</h4>
-                        <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam
-                            dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
-                        <a class="border-bottom border-primary text-uppercase text-decoration-none" href="">Read More <i
-                                class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-5">
-                    <div class="position-relative">
-                        <img class="img-fluid w-100" src="{% static 'img/blog-2.jpg' %}" alt="">
-                        <div class="position-absolute bg-primary d-flex flex-column align-items-center justify-content-center rounded-circle"
-                            style="width: 60px; height: 60px; bottom: -30px; right: 30px;">
-                            <h4 class="font-weight-bold mb-n1">01</h4>
-                            <small class="text-white text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <div class="bg-secondary" style="padding: 30px;">
-                        <div class="d-flex mb-3">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" style="width: 40px; height: 40px;"
-                                    src="{% static 'img/user.jpg' %}" alt="">
-                                <a class="text-muted ml-2" href="">John Doe</a>
-                            </div>
-                            <div class="d-flex align-items-center ml-4">
-                                <i class="far fa-bookmark text-primary"></i>
-                                <a class="text-muted ml-2" href="">Web Design</a>
-                            </div>
-                        </div>
-                        <h4 class="font-weight-bold mb-3">Kasd tempor diam sea justo dolor</h4>
-                        <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam
-                            dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
-                        <a class="border-bottom border-primary text-uppercase text-decoration-none" href="">Read More <i
-                                class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->
 
 
     <!-- Footer Start -->
@@ -671,43 +526,20 @@
                         </div>
                     </div>
                     <div class="col-md-6 mb-5">
-                        <h3 class="text-primary mb-4">enlaces rápidos</h3>
+                        <h3 class="text-primary mb-4">Enlaces Rápidos</h3>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Hogar</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Nosotros</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Servicio</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Galeria</a>
-                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+                            <a class="text-white mb-2" href="{% url 'home' %}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href="{% url 'nosotros' %}"><i class="fa fa-angle-right mr-2"></i>Nosotros</a>
+                            <a class="text-white mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Servicio</a>
+                            <a class="text-white mb-2" href="{% url 'galeria' %}"><i class="fa fa-angle-right mr-2"></i>Productos</a>
+                            <a class="text-white" href="{% url 'contacto2' %}"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
-        style="border-color: #3E3E4E !important;">
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-
-            </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <ul class="nav d-inline-flex">
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Terms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Help</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    
     <!-- Footer End -->
 
 
