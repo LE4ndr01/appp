@@ -21,10 +21,10 @@ class Controller:
             )
             lista_productos.append(producto)
         return lista_productos
-
+sdk = mercadopago.SDK("TEST-897243312298306-061023-3c50ea005623944e7672975229c97897-1381947166")
 '''
 def pagar(self):
-sdk = mercadopago.SDK("TEST-897243312298306-061023-3c50ea005623944e7672975229c97897-1381947166")
+
 
 
 #vendedor
