@@ -253,7 +253,7 @@ def home(request):
         variables['mensaje']= "Sin datos"
     return render(request, 'core/home.html', variables)
 
-<<<<<<< HEAD
+
 #------------------------------------------------------
 
 def contacto_view(request):
@@ -275,7 +275,7 @@ def contacto_view(request):
 
 def vendedor(request):
     return render(request,"vendedor.html")
-=======
+
 ################################################################
 
 
@@ -303,4 +303,4 @@ def remove_from_cart(request, cart_item_id):
     cart_item = CartItem.objects.get(pk=cart_item_id)
     cart_item.delete()
     return redirect('cart')
->>>>>>> 877f62365871c31cf82c1bd6c513737e054b58d6
+
