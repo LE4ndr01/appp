@@ -1,9 +1,5 @@
 import mercadopago
-<<<<<<< HEAD
 
-
-
-=======
 from zeep import Client
 from .producto import *
 
