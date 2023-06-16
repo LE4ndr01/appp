@@ -1,5 +1,4 @@
 import mercadopago
-
 from zeep import Client
 from .producto import *
 
@@ -22,11 +21,10 @@ class Controller:
             )
             lista_productos.append(producto)
         return lista_productos
-
-'''
->>>>>>> 877f62365871c31cf82c1bd6c513737e054b58d6
-def pagar(self):
 sdk = mercadopago.SDK("TEST-897243312298306-061023-3c50ea005623944e7672975229c97897-1381947166")
+'''
+def pagar(self):
+
 
 
 #vendedor
